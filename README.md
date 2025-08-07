@@ -48,31 +48,27 @@ The project is structured as a modular pipeline to ensure clarity, maintainabili
 
 First, set up a Python virtual environment and install the required dependencies.
 
-# Navigate to the project directory
+### Navigate to the project directory
 cd path/to/enso-forecasting
 
-# Create and activate a virtual environment
+### Create and activate a virtual environment
 python -m venv venv
 
-# On Windows
+### On Windows
 venv\Scripts\activate
 
-# On macOS/Linux
+### On macOS/Linux
 source venv/bin/activate
 
-# Install dependencies
+### Install dependencies
 pip install torch numpy xarray pandas scipy scikit-learn matplotlib
 
 
 
-
-
-
-
-### 2. Download Data
+## 2. Download Data
 Place the required `.nc` and `.txt` data files in the `data/` directory. These files need to be acquired from the official sources linked in the **Data Sources** section above.
 
-### 3. Run the Pipeline
+## 3. Run the Pipeline
 Execute the main script from the root directory of the project. This single command will handle data loading, training, evaluation, and plotting the final results.
 
 ```bash
@@ -125,6 +121,7 @@ Well-structured temporal windows
 Proper evaluation methodology
 
 The model remains both interpretable and high-performing.
+
 
 
 
