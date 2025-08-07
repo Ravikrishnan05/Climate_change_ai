@@ -44,34 +44,42 @@ The project is structured as a modular pipeline to ensure clarity, maintainabili
 
 ## How to Run the Project
 
-### 1. Setup
+## ✅ 1. Setup
 
 First, set up a Python virtual environment and install the required dependencies.
-
 
 # Navigate to the project directory
 cd path/to/enso-forecasting
 
 # Create and activate a virtual environment
 python -m venv venv
-# On Windows: venv\Scripts\activate
-# On macOS/Linux: source venv/bin/activate
+
+# On Windows
+venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
 
 # Install dependencies
 pip install torch numpy xarray pandas scipy scikit-learn matplotlib
 
-###📥 2. Download Data
-Place the required .nc and .txt data files in the data/ directory.
 
-You can add links here if you're hosting the data, or simply mention that they need to be acquired from the official sources (COBE SST dataset and NOAA Niño 3.4 Index).
 
-### 🚀 3. Run the Pipeline
-Execute the main script from the root directory of the project:
 
-bash
-Copy
-Edit
+
+
+
+### 2. Download Data
+Place the required `.nc` and `.txt` data files in the `data/` directory. These files need to be acquired from the official sources linked in the **Data Sources** section above.
+
+### 3. Run the Pipeline
+Execute the main script from the root directory of the project. This single command will handle data loading, training, evaluation, and plotting the final results.
+
+```bash
 python src/run_reference_pipeline.py
+```
+
+
 This script will:
 
 Load and preprocess the data
@@ -117,6 +125,7 @@ Well-structured temporal windows
 Proper evaluation methodology
 
 The model remains both interpretable and high-performing.
+
 
 
 
