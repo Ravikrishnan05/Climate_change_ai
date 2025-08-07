@@ -88,39 +88,21 @@ Save the best-performing model as reference_cnn_replication.pt
 
 Output final Correlation and RMSE metrics
 
-### 📚 Methodology in Detail
-🧪 Data Splitting Strategy
-A strict chronological split with a gap period is used to prevent data leakage and ensure honest evaluation.
+## Methodology in Detail
 
-Block	Start Date	End Date	Purpose
-Training Set	1960-01-01	2005-12-31	Model learns patterns from this data. Last target seen: Feb 2006.
-Gap / Buffer	2006-01-01	2006-12-31	1-year buffer to avoid data leakage. Discarded entirely.
-Test Set	2007-01-01	2017-12-31	Completely unseen data used for final evaluation.
+### Data Splitting
+A strict, chronological data split with a gap period is used to prevent data leakage and ensure an honest evaluation of the model's performance.
 
-### 🔁 Training and Evaluation
-Epoch-based Training:
-The model is trained for 40 epochs on the full training dataset.
+| Block         | Start Date   | End Date     | Purpose                                                                                                                        |
+|---------------|--------------|--------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Training Set  | 1960-01-01   | 2005-12-31   | The model learns all its patterns and weights exclusively from this data. The last target it sees is for Feb 2006.               |
+| Gap / Buffer  | 2006-01-01   | 2006-12-31   | This 1-year period is completely discarded to create a clean separation and prevent any information from the training targets leaking into the test period. |
+| Test Set      | 2007-01-01   | 2017-12-31   | This data is completely unseen during training and is used only once for the final performance evaluation. The first input is from Jan 2007, a truly "future" date. |
 
-Early Stopping Logic:
-After each epoch, test loss is calculated. If it's the lowest so far, model weights are saved.
-
-Final Evaluation:
-After all epochs, the best saved model is loaded and used to make predictions on the test set.
-
-This ensures that the reported metrics reflect the best possible performance during training, without overfitting.
-
-### ✅ Summary
-This project showcases a clean, modular approach to solving a real-world climate forecasting problem using deep learning.
-
-By using:
-
-Spatial patterns in SST anomaly maps
-
-Well-structured temporal windows
-
-Proper evaluation methodology
-
-The model remains both interpretable and high-performing.
+### Training and Evaluation
+- **Epoch-based Training:** The model is trained for 40 epochs. In each epoch, it sees the entire training dataset once.
+- **Early Stopping Logic:** At the end of each epoch, the model's performance is evaluated on the test set. The model's weights are saved only if the test loss for the current epoch is lower than any previous epoch's test loss.
+- **Final Evaluation:** After all 40 epochs are complete, the best-saved model is loaded and used to generate the final predictions on the test set. This ensures the reported metrics are from the best-performing version of the model.
 
 
 
