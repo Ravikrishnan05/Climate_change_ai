@@ -48,7 +48,7 @@ The project is structured as a modular pipeline to ensure clarity, maintainabili
 
 First, set up a Python virtual environment and install the required dependencies.
 
-```bash
+
 # Navigate to the project directory
 cd path/to/enso-forecasting
 
@@ -60,11 +60,12 @@ python -m venv venv
 # Install dependencies
 pip install torch numpy xarray pandas scipy scikit-learn matplotlib
 
-2. Download Data
+📥 2. Download Data
 Place the required .nc and .txt data files in the data/ directory.
-(You can add links here if you're hosting the data, or just mention that they need to be acquired from the official sources mentioned above.)
 
-3. Run the Pipeline
+You can add links here if you're hosting the data, or simply mention that they need to be acquired from the official sources (COBE SST dataset and NOAA Niño 3.4 Index).
+
+🚀 3. Run the Pipeline
 Execute the main script from the root directory of the project:
 
 bash
@@ -77,7 +78,7 @@ Load and preprocess the data
 
 Train the CNN model for 40 epochs
 
-Evaluate on the test set
+Evaluate the model on the test set
 
 Save the best-performing model as reference_cnn_replication.pt
 
@@ -93,25 +94,29 @@ Gap / Buffer	2006-01-01	2006-12-31	1-year buffer to avoid data leakage. Discarde
 Test Set	2007-01-01	2017-12-31	Completely unseen data used for final evaluation.
 
 🔁 Training and Evaluation
-Epoch-based Training: Trained for 40 epochs on the full training dataset.
+Epoch-based Training:
+The model is trained for 40 epochs on the full training dataset.
 
-Early Stopping Logic: After each epoch, test loss is calculated. If it's the lowest so far, model weights are saved.
+Early Stopping Logic:
+After each epoch, test loss is calculated. If it's the lowest so far, model weights are saved.
 
-Final Evaluation: The saved best model is loaded and used to make predictions on the test set.
+Final Evaluation:
+After all epochs, the best saved model is loaded and used to make predictions on the test set.
 
-This ensures that the reported metrics reflect the best possible performance from training, without overfitting.
+This ensures that the reported metrics reflect the best possible performance during training, without overfitting.
 
 ✅ Summary
-This project showcases a clean, modular approach to solving a real-world climate forecasting problem using deep learning. The use of spatial SST patterns and well-structured temporal windows makes the model both interpretable and powerful.
+This project showcases a clean, modular approach to solving a real-world climate forecasting problem using deep learning.
 
-For questions or collaboration, feel free to open an issue or reach out!
+By using:
 
-yaml
-Copy
-Edit
+Spatial patterns in SST anomaly maps
 
----
+Well-structured temporal windows
 
-Let me know if you'd like me to save this as a `.md` file or help you upload it to GitHub.
+Proper evaluation methodology
+
+The model remains both interpretable and high-performing.
+
 
 
