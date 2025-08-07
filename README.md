@@ -60,12 +60,12 @@ python -m venv venv
 # Install dependencies
 pip install torch numpy xarray pandas scipy scikit-learn matplotlib
 
-📥 2. Download Data
+###📥 2. Download Data
 Place the required .nc and .txt data files in the data/ directory.
 
 You can add links here if you're hosting the data, or simply mention that they need to be acquired from the official sources (COBE SST dataset and NOAA Niño 3.4 Index).
 
-🚀 3. Run the Pipeline
+### 🚀 3. Run the Pipeline
 Execute the main script from the root directory of the project:
 
 bash
@@ -84,7 +84,7 @@ Save the best-performing model as reference_cnn_replication.pt
 
 Output final Correlation and RMSE metrics
 
-📚 Methodology in Detail
+### 📚 Methodology in Detail
 🧪 Data Splitting Strategy
 A strict chronological split with a gap period is used to prevent data leakage and ensure honest evaluation.
 
@@ -93,7 +93,7 @@ Training Set	1960-01-01	2005-12-31	Model learns patterns from this data. Last ta
 Gap / Buffer	2006-01-01	2006-12-31	1-year buffer to avoid data leakage. Discarded entirely.
 Test Set	2007-01-01	2017-12-31	Completely unseen data used for final evaluation.
 
-🔁 Training and Evaluation
+### 🔁 Training and Evaluation
 Epoch-based Training:
 The model is trained for 40 epochs on the full training dataset.
 
@@ -105,7 +105,7 @@ After all epochs, the best saved model is loaded and used to make predictions on
 
 This ensures that the reported metrics reflect the best possible performance during training, without overfitting.
 
-✅ Summary
+### ✅ Summary
 This project showcases a clean, modular approach to solving a real-world climate forecasting problem using deep learning.
 
 By using:
@@ -117,6 +117,7 @@ Well-structured temporal windows
 Proper evaluation methodology
 
 The model remains both interpretable and high-performing.
+
 
 
 
