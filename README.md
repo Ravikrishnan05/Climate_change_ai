@@ -39,7 +39,7 @@ The project is structured as a modular pipeline to ensure clarity, maintainabili
 
 - `data/`: Contains the raw `.nc` and `.txt` data files.
 - `src/data_loader.py`: The data expert. Responsible for loading, cleaning, and preparing the (input, target) pairs from the raw files according to specified time windows and parameters.
-- `src/models.py`: A catalog of model blueprints. Contains the `ReferenceCNN` class, an exact replica of the successful architecture from the tutorial.
+- `src/models.py`: A catalog of model blueprints. Contains the `ReferenceCNN` class,  successful architecture.
 - `src/run_reference_pipeline.py`: The main conductor script that orchestrates the entire training and evaluation process, bringing together the data and models to produce the final result.
 
 ## How to Run the Project
@@ -59,4 +59,59 @@ python -m venv venv
 
 # Install dependencies
 pip install torch numpy xarray pandas scipy scikit-learn matplotlib
+
+2. Download Data
+Place the required .nc and .txt data files in the data/ directory.
+(You can add links here if you're hosting the data, or just mention that they need to be acquired from the official sources mentioned above.)
+
+3. Run the Pipeline
+Execute the main script from the root directory of the project:
+
+bash
+Copy
+Edit
+python src/run_reference_pipeline.py
+This script will:
+
+Load and preprocess the data
+
+Train the CNN model for 40 epochs
+
+Evaluate on the test set
+
+Save the best-performing model as reference_cnn_replication.pt
+
+Output final Correlation and RMSE metrics
+
+📚 Methodology in Detail
+🧪 Data Splitting Strategy
+A strict chronological split with a gap period is used to prevent data leakage and ensure honest evaluation.
+
+Block	Start Date	End Date	Purpose
+Training Set	1960-01-01	2005-12-31	Model learns patterns from this data. Last target seen: Feb 2006.
+Gap / Buffer	2006-01-01	2006-12-31	1-year buffer to avoid data leakage. Discarded entirely.
+Test Set	2007-01-01	2017-12-31	Completely unseen data used for final evaluation.
+
+🔁 Training and Evaluation
+Epoch-based Training: Trained for 40 epochs on the full training dataset.
+
+Early Stopping Logic: After each epoch, test loss is calculated. If it's the lowest so far, model weights are saved.
+
+Final Evaluation: The saved best model is loaded and used to make predictions on the test set.
+
+This ensures that the reported metrics reflect the best possible performance from training, without overfitting.
+
+✅ Summary
+This project showcases a clean, modular approach to solving a real-world climate forecasting problem using deep learning. The use of spatial SST patterns and well-structured temporal windows makes the model both interpretable and powerful.
+
+For questions or collaboration, feel free to open an issue or reach out!
+
+yaml
+Copy
+Edit
+
+---
+
+Let me know if you'd like me to save this as a `.md` file or help you upload it to GitHub.
+
 
