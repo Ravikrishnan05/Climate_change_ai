@@ -15,7 +15,7 @@ from models import SimpleCNN, get_ridge_model, get_random_forest_model
 
 # --- CHRONOLOGICAL SPLIT DEFINITION ---
 # We define our training and validation periods here. This is crucial for
-# the "strict chronological cross-validation" you mentioned in your resume.
+# the "strict chronological cross-validation" 
 # We leave a gap between train/val and val/test to prevent data leakage.
 TRAIN_START, TRAIN_END = '1982-01-01', '2005-12-31'
 # A validation set is used to tune hyperparameters, but for simplicity, we'll
@@ -147,4 +147,5 @@ if __name__ == "__main__":
     if args.model == 'cnn':
         train_cnn(args)
     else:
+
         train_sklearn(args.model, args)
