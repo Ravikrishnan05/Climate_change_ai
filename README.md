@@ -13,6 +13,8 @@ By carefully replicating the reference implementation's data processing, model a
 
 ![Prediction vs Ground Truth](https://image2url.com/images/1756649919828-8eec95d2-39f4-4e2b-b92b-bfb47cf00c5e.png)
 
+![Prediction vs Ground Truth](https://image2url.com/images/1756658572738-1e32de5c-0ede-47f8-93cd-4fac47f97fc2.png)
+
 # This plot visually confirms the strong agreement between the model's predictions (dashed line) and the ground truth (solid line) on the unseen test set.
 
 
@@ -102,6 +104,7 @@ A strict, chronological data split with a gap period is used to prevent data lea
 - **Epoch-based Training:** The model is trained for 40 epochs. In each epoch, it sees the entire training dataset once.
 - **Early Stopping Logic:** At the end of each epoch, the model's performance is evaluated on the test set. The model's weights are saved only if the test loss for the current epoch is lower than any previous epoch's test loss.
 - **Final Evaluation:** After all 40 epochs are complete, the best-saved model is loaded and used to generate the final predictions on the test set. This ensures the reported metrics are from the best-performing version of the model.
+
 
 
 
